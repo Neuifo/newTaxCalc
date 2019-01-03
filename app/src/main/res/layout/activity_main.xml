@@ -8,6 +8,41 @@
         tools:context=".MainActivity">
 
 
+    <EditText
+            android:id="@+id/accumulation_fund_rate"
+            android:layout_width="wrap_content"
+            android:hint="公积金"
+            android:layout_height="wrap_content"/>
+
+
+    <EditText
+            android:id="@+id/yanglao_rate"
+            android:layout_width="wrap_content"
+            android:hint="养老"
+            app:layout_constraintTop_toBottomOf="@id/accumulation_fund_rate"
+            android:layout_height="wrap_content"/>
+
+    <EditText
+            android:id="@+id/shiye_rate"
+            android:layout_width="wrap_content"
+            android:hint="失业保险"
+            app:layout_constraintTop_toBottomOf="@id/yanglao_rate"
+            android:layout_height="wrap_content"/>
+
+
+    <EditText
+            android:id="@+id/yiliao_rate"
+            android:layout_width="wrap_content"
+            android:hint="医疗"
+            app:layout_constraintTop_toBottomOf="@id/shiye_rate"
+            android:layout_height="wrap_content"/>
+
+    <EditText
+            android:id="@+id/buchong_rate"
+            android:layout_width="wrap_content"
+            android:hint="补充公积金"
+            app:layout_constraintTop_toBottomOf="@id/yiliao_rate"
+            android:layout_height="wrap_content"/>
 
 
 </android.support.constraint.ConstraintLayout>
