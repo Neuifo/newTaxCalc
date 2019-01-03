@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingTop="50dp"
+    android:paddingRight="20dp"
+    tools:context=".MainActivity">
 
 
-    <EditText
-            android:id="@+id/accumulation_fund_rate"
+    <!--<EditText
+            android:id="@+id/accumulat®ion_fund_rate"
             android:layout_width="wrap_content"
             android:hint="公积金"
             android:layout_height="wrap_content"/>
@@ -42,7 +44,81 @@
             android:layout_width="wrap_content"
             android:hint="补充公积金"
             app:layout_constraintTop_toBottomOf="@id/yiliao_rate"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"/>-->
+
+
+    <TextView
+        android:id="@+id/basic_salary_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="基本薪"
+        app:layout_constraintBottom_toBottomOf="@id/basic_salary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/basic_salary" />
+
+    <EditText
+        android:id="@+id/basic_salary"
+        android:layout_width="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        app:layout_constraintLeft_toRightOf="@id/basic_salary_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/four_accumulation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="四金"
+        app:layout_constraintBottom_toBottomOf="@id/four_accumulation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/four_accumulation" />
+
+    <EditText
+        android:id="@+id/four_accumulation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:inputType="phone"
+        app:layout_constraintLeft_toRightOf="@id/basic_salary_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/basic_salary" />
+
+
+    <TextView
+        android:id="@+id/other_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="其他"
+        app:layout_constraintBottom_toBottomOf="@id/other"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/other" />
+
+
+    <EditText
+        android:id="@+id/other"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:inputType="phone"
+        app:layout_constraintLeft_toRightOf="@id/basic_salary_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/four_accumulation" />
+
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
+        android:text="计算"
+        android:textColor="#ffff"
+        app:layout_constraintTop_toBottomOf="@id/other" />
 
 
 </android.support.constraint.ConstraintLayout>

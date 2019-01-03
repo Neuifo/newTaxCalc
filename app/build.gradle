@@ -10,9 +10,47 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            // jarsigner -verbose -keystore pricing_platform.jks -storepass password  -signedjar signed.apk unsign.apk chengjin
+            // zipalign -v 4 TestApp-unsigned.apk aligned.apk
+            // jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore myKey.jks -signedjar signed.apk unsign.apk myKeyAlias
+
+            v2SigningEnabled false //android 7.0安装渠道包问题
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
+    android.applicationVariants.all {
+        def channel = "neuifo"
+        //获取当前时间的"YYYY-MM-dd"格式。assembleRelease
+        def createTime = new Date().format("YYYY-MM-dd_HHmm", TimeZone.getTimeZone("GMT+08:00"))
+        def buildType = it.buildType.name
+        if (buildType == "release") {
+            it.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/apks/${createTime}")
+        }
+        it.outputs.all {
+            if (it.outputFile != null && 'release' == buildType) {
+                if (it.outputFile.name.endsWith(".apk")) {
+                    //重新对apk命名。
+                    it.outputFileName = "${channel}_v${versionName}_${createTime}-${buildType}.apk"
+                }
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -23,11 +61,15 @@ dependencies {
     api("com.android.support:appcompat-v7:27.1.1") {
         force = true
     }
+
+    implementation("com.android.support:design:27.1.1") {
+        force = true
+    }
     implementation 'com.android.support.constraint:constraint-layout:+'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+    //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 }
